@@ -1,0 +1,27 @@
+version: '0.1'
+
+services:
+  server:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8081:8081"
+    environment:
+      - PORT=8081
+      - DBURL=mongodb+srv://hassainseam:EeZlgoM8Fyq0YJb9@task.q53uq.mongodb.net/app?retryWrites=true&w=majority&appName=task
+      - REDIS_URL=redis://default:8fvxV20v0mraJ2mUp8f6SpRq81JYoTgA@redis-11289.c305.ap-south-1-1.ec2.redns.redis-cloud.com:11289
+      - WEBTOKEN_SECRET_KEY=Ke3F9Hr4FD
+    depends_on:
+      - redis
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
+    command: npm run start
+
+  redis:
+    image: redis:alpine
+    container_name: redis_container
+    ports:
+      - "6379:6379"
+
