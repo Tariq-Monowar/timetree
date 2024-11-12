@@ -15,6 +15,7 @@ COPY . .
 
 # Step 6: Build the TypeScript code
 RUN npm run build
+RUN npm start
 
 # Step 7: Expose the port your app runs on
 EXPOSE 8081
