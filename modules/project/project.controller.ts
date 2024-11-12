@@ -146,7 +146,7 @@ class ProjectController {
       const projectId = req.params.id;
 
       // Validate the role
-      if (!["admin", "manager"].includes(role)) {
+      if (!["admin", "manager", "developer"].includes(role)) {
         res.status(400).json({ message: "Invalid role specified" });
         return;
       }
