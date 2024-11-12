@@ -16,16 +16,14 @@ dotenv.config();
 
 const app = express();
 
-app.use(cors({
-  origin: ['http://localhost:5173', 'https://netlify.app','https://nstpdispatchub.netlify.app', '*']
-}));
+app.use(cors());
 
 const server = http.createServer(app);
 
 export const io = new Server(server, {
   pingTimeout: 60000,
   cors: {
-    origin: ['http://localhost:5173', 'https://netlify.app','https://nstpdispatchub.netlify.app', '*'],
+    origin: ['*'],
     methods: ["GET", "POST"],
   },
 }); 
